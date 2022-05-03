@@ -4,7 +4,7 @@ jQuery.ajax({
     
             type: "POST",
             url: "../wp-content/plugins/contact-form-block/includes/google_captcha.php",
-            data: jQuery('#FORMID').serialize(),
+            data: jQuery('#contact').serialize(),
             async:false,
             success: function(data) {
              if(data.nocaptcha==="true") {
@@ -24,6 +24,6 @@ jQuery.ajax({
             alert("Please Don't spam");
           }
         } else {
-            jQuery("#FORMID").submit
+            jQuery("#contact").submit
        }
 });

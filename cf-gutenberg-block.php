@@ -262,188 +262,159 @@ function Cf_Block_Render_callback($attributes)
     ob_start();
 
     ?>
-<div class="container">
-        <form id="contact" action="" enctype="multipart/form-data" style="border-style:<?php esc_attr_e($attributes['border_style']);?>;
-        border-color:<?php esc_attr_e($attributes['bordercolor']);?>;
-        background:<?php esc_attr_e($attributes['gradientv']);?>;
-        border-radius:<?php esc_attr_e($attributes['borderradiousvalue']);?>;
-        padding-top:<?php esc_attr_e($attributes['paddingtop']);?>;
-        padding-left:<?php esc_attr_e($attributes['paddingleft']);?>;
-        padding-right:<?php esc_attr_e($attributes['paddingright']);?>;
-        padding-bottom:<?php esc_attr_e($attributes['paddingbottom']);?>; ">
-        <?php
-        if (($attributes['formlayout']) == 'one-column') {
-                ?>
-            <h3 class="contact-maintitle" style="color:<?php esc_attr_e($attributes['receipenamecolor']);?>;text-align:<?php esc_attr_e($attributes['align']);?>"><?php esc_attr_e($attributes['title']);?></h3>
-
-            <h4 class="contact-subtitle" style="color:<?php esc_attr_e($attributes['receipenamecolor']);?>;text-align:<?php esc_attr_e($attributes['align']);?>"><?php esc_attr_e($attributes['subtitle']);?></h4>
-            <div class="form-field">
-            <?php if (($attributes['isFirstNameChecked']) == 1) {?>
-            <fieldset class="onecolumnfieldset">
-                    <input placeholder="Your name" type="text" id="first_name" tabindex="1"  name="first_name" required autofocus>
-            </fieldset>
-                <?php } else {_e('');
-            }?>
-
-            <?php if (($attributes['isLastNameChecked']) == 1) {?>
-                <fieldset class="onecolumnfieldset">
-                <input id="last_name" placeholder="Enter last name" name="last_name" type="text" tabindex="2" required>
-                </fieldset>                    
-                    <?php } else {_e('');
-            }?>
-
-            <?php if (($attributes['iswhatgender']) == 1) {?>
-                <fieldset class="onecolumnfieldset radiofieldset">
-                <input id="Male" type="radio" name="user_gender" value="Male"><label for="Male"><span></span>Male</label>
-                <input id="Female" type="radio" name="user_gender" value="Female"><label for="Female"><span></span>Female</label>
-                </fieldset>                    
-                    <?php } else {_e('');
-            }?>
-
-            <?php if (($attributes['isEmailChecked']) == 1) {?>
-                <fieldset class="onecolumnfieldset">
-                <input id="email" placeholder="Enter email" name="email" type="email" tabindex="2" required>
-                </fieldset>
-                    <?php } else {_e('');
-            }?>
-           
-           <?php if (($attributes['isPhonenumChecked']) == 1) {?>
-                <fieldset class="onecolumnfieldset">
-                <input placeholder="Your Phone Number" type="tel" tabindex="3" id="c_number"name="c_number" required>
-                </fieldset>
-                <?php } else {_e('');
-            }?>
-
-            <?php if (($attributes['isAddressChecked']) == 1) {?>
-                <fieldset class="onecolumnfieldset">
-                <input placeholder="Your Address" type="text" tabindex="3" id="address" name="address" required>
-                </fieldset>
-                <?php } else {_e('');
-            }?>
-
-            <?php if (($attributes['isMessageChecked']) == 1) {?>
-                <fieldset class="onecolumnfieldset">
-                    <textarea placeholder="Type your Message Here...." id="message" name="message" rows="4" cols="50"></textarea>
-                </fieldset>
-                    <?php } else {_e('');
-            }?>
-
-            <?php if (($attributes['isRecaptchaEnable']) == 1) {?>
-                <fieldset class="onecolumnfieldset">
-                    <div class="g-recaptcha" id="rcaptcha" data-theme="dark"  data-sitekey="<?php esc_attr_e($attributes['sitekey']);?>"></div>
-                    <span id="captcha" style="color:red"></span>
-                </fieldset>
-                    <?php } else {_e('');
-            }?>
-
-            <fieldset class="onecolumnfieldset">
-                <input type="submit" name="gutenberg_form_submit" id="submit"  class="btn btn-success p-0" data-submit="...Sending">
-            </fieldset>
-        </div>
-        </form>
-
-
-    </div>
-
-           
-
-           
-
-           
-
-         
-
-          
-
-           
-
-         
-
-
+    <div class="container">
+        <form id="contact" action="" method="POST" enctype="multipart/form-data" style="border-style:<?php esc_attr_e($attributes['border_style']);?>;border-color:<?php esc_attr_e($attributes['bordercolor']);?>;background:<?php esc_attr_e($attributes['gradientv']);?>;border-radius:<?php esc_attr_e($attributes['borderradiousvalue']);?>;padding-top:<?php esc_attr_e($attributes['paddingtop']);?>;padding-left:<?php esc_attr_e($attributes['paddingleft']);?>;padding-right:<?php esc_attr_e($attributes['paddingright']);?>;padding-bottom:<?php esc_attr_e($attributes['paddingbottom']);?>; ">
 
             <?php
-} elseif (($attributes['formlayout']) == 'two-column') {
-        ?>
-         <div class="row">
-            <?php if (($attributes['isFirstNameChecked']) == 1) {?>
+            if (($attributes['formlayout']) == 'one-column') {  ?>
 
-            <div class="col-xs-6 form-group">
-                <label>First name:</label>
-                <input class="form-control" name="first_name" type="text" />
-            </div>
+                <h3 class="contact-maintitle" style="color:<?php esc_attr_e($attributes['receipenamecolor']);?>;text-align:<?php esc_attr_e($attributes['align']);?>">
+                    <?php esc_attr_e($attributes['title']);?>
+                </h3>
 
-            <?php } else {_e('');
-        }?>
+                <h4 class="contact-subtitle" style="color:<?php esc_attr_e($attributes['receipenamecolor']);?>;text-align:<?php esc_attr_e($attributes['align']);?>">
+                    <?php esc_attr_e($attributes['subtitle']);?>
+                </h4>
+                
+                <div class="form-field">
+                    <?php if (($attributes['isFirstNameChecked']) == 1) {?>                
+                        <fieldset class="onecolumnfieldset">
+                                <input placeholder="Your name" type="text" id="first_name" tabindex="1"  name="first_name" required autofocus>
+                        </fieldset>
 
-            <?php if (($attributes['isLastNameChecked']) == 1) {?>
-            <div class="col-xs-6 form-group">
-                <label>Last name:</label>
-                <input class="form-control" name="last_name" type="text" />
-            </div>
-            <?php } else {_e('');
-        }?>
+                        <?php } else {_e('');
+                    }?>
 
-            <?php if (($attributes['isEmailChecked']) == 1) {?>
-            <div class="col-xs-6 form-group">
-                <label>Email:</label>
-                <input class="form-control" name="email" type="text" required/>
-            </div>
-            <?php } else {_e('');
-        }?>
+                    <?php if (($attributes['isLastNameChecked']) == 1) {?>
+                        <fieldset class="onecolumnfieldset">
+                                <input id="last_name" placeholder="Enter last name" name="last_name" type="text" tabindex="2" required>
+                        </fieldset>      
 
-            <?php if (($attributes['isPhonenumChecked']) == 1) {?>
-            <div class="col-xs-6 form-group">
-                <label>Contact No:</label>
-                <input class="form-control" name="c_number" type="text" required/>
-            </div>
-            <?php } else {_e('');
-        }?>
+                        <?php } else {_e('');
+                    }?>
 
-            <?php if (($attributes['isAddressChecked']) == 1) {?>
-            <div class="col-xs-6 form-group">
-                <label>Address:</label>
-                <input class="form-control" name="address" type="text" />
-            </div>
-            <?php } else {
-            _e('');
-        }?>
+                    <?php if (($attributes['iswhatgender']) == 1) {?>
+                        <fieldset class="onecolumnfieldset radiofieldset">
+                                <input id="Male" type="radio" name="user_gender" value="Male"><label for="Male"><span></span>Male</label>
+                                <input id="Female" type="radio" name="user_gender" value="Female"><label for="Female"><span></span>Female</label>
+                        </fieldset> 
+
+                        <?php } else {_e('');
+                    }?>
+
+                    <?php if (($attributes['isEmailChecked']) == 1) {?>
+                        <fieldset class="onecolumnfieldset">
+                                <input id="email" placeholder="Enter email" name="email" type="email" tabindex="2" required>
+                        </fieldset>
+
+                        <?php } else {_e('');
+                    }?>
+            
+                    <?php if (($attributes['isPhonenumChecked']) == 1) {?>
+                        <fieldset class="onecolumnfieldset">
+                                <input placeholder="Your Phone Number" type="tel" tabindex="3" id="c_number"name="c_number" required>
+                        </fieldset>
+
+                        <?php } else {_e('');
+                    }?>
+
+                    <?php if (($attributes['isAddressChecked']) == 1) {?>
+                        <fieldset class="onecolumnfieldset">
+                                <input placeholder="Your Address" type="text" tabindex="3" id="address" name="address" required>
+                        </fieldset>
+
+                        <?php } else {_e('');
+                    }?>
 
                     <?php if (($attributes['isMessageChecked']) == 1) {?>
-            <div class="col-xs-6 form-group">
-                <label>Message:</label>
-                <textarea id="message" class="form-control" name="message" rows="4" cols="50"></textarea>
+                        <fieldset class="onecolumnfieldset">
+                                <textarea placeholder="Type your Message Here...." id="message" name="message" rows="4" cols="50"></textarea>
+                        </fieldset>
+
+                        <?php } else {_e('');
+                    }?>
+
+                    <?php if (($attributes['isRecaptchaEnable']) == 1) {?>
+                        <fieldset class="onecolumnfieldset">
+                                <div class="g-recaptcha" id="rcaptcha" data-theme="dark"  data-sitekey="<?php esc_attr_e($attributes['sitekey']);?>"></div>
+                                <span id="captcha" style="color:red"></span>
+                        </fieldset>
+
+                        <?php } else {_e('');
+                    }?>
+                                            
+                </div>
+            
+                <?php
+    } elseif (($attributes['formlayout']) == 'two-column') {
+            ?>
+
+            <div class="row">
+                <?php if (($attributes['isFirstNameChecked']) == 1) {?>
+                    <div class="col-xs-6 form-group">
+                        <label>First name:</label>
+                        <input class="form-control" name="first_name" type="text" />
+                    </div>
+
+                <?php } else {_e(''); }?>
+
+                <?php if (($attributes['isLastNameChecked']) == 1) {?>
+                    <div class="col-xs-6 form-group">
+                        <label>Last name:</label>
+                        <input class="form-control" name="last_name" type="text" />
+                    </div>
+
+                <?php } else {_e(''); }?>
+
+                <?php if (($attributes['isEmailChecked']) == 1) {?>
+                    <div class="col-xs-6 form-group">
+                        <label>Email:</label>
+                        <input class="form-control" name="email" type="text" required/>
+                    </div>
+
+                <?php } else {_e(''); }?>
+
+                <?php if (($attributes['isPhonenumChecked']) == 1) {?>
+                    <div class="col-xs-6 form-group">
+                        <label>Contact No:</label>
+                        <input class="form-control" name="c_number" type="text" required/>
+                    </div>
+
+                <?php } else {_e(''); }?>
+
+                <?php if (($attributes['isAddressChecked']) == 1) {?>
+                    <div class="col-xs-6 form-group">
+                        <label>Address:</label>
+                        <input class="form-control" name="address" type="text" />
+                    </div>
+
+                <?php } else { _e(''); }?>
+
+                <?php if (($attributes['isMessageChecked']) == 1) {?>
+                    <div class="col-xs-6 form-group">
+                        <label>Message:</label>
+                        <textarea id="message" class="form-control" name="message" rows="4" cols="50"></textarea>
+                    </div>
+
+                <?php } else {_e(''); }?>
+
+                <?php if (($attributes['isRecaptchaEnable']) == 1) {?>
+                    <div class="col-xs-12 form-group">
+                        <div class="g-recaptcha"  id="rcaptcha" data-sitekey="<?php esc_attr_e($attributes['sitekey']);?>"></div>
+                        <span id="captcha" style="color:red"></span>
+                    </div>
+                <?php } else {_e(''); }?>
+
+                <?php } ?>
+
+
+                <fieldset class="onecolumnfieldset">
+                    <input type="submit" id="submit" class="btn btn-success p-0" name="gutenberg_form_submit" >
+                </fieldset>         
             </div>
-                    <?php } else {_e('');
-        }?>
 
-        <?php if (($attributes['isRecaptchaEnable']) == 1) {?>
-            <div class="col-xs-12 form-group">
-                <div class="g-recaptcha"  id="rcaptcha" data-sitekey="<?php esc_attr_e($attributes['sitekey']);?>"></div>
-                <span id="captcha" style="color:red"></span>
-            </div>
-                            <?php } else {_e('');
-        }?>
-
-
-
-
-
-            <?php
-}
-    ?>
-
-
-            <div class="form-group">
-                <input type="submit" id="submit" class="btn btn-success p-0" name="gutenberg_form_submit" >
-            </div>
-<?php
-?>
-     </div>
-
-    </form>
-
-
-</div>
+        </form>
+    </div>
 
     <?php
 if (!empty($_POST['gutenberg_form_submit'])) {
@@ -454,12 +425,15 @@ if (!empty($_POST['gutenberg_form_submit'])) {
             if (($attributes['isLastNameChecked']) == 1) {
                 $last_name = $_POST['last_name'];
             }
-            if (($attributes['iswhatgender']) == 1) {
-                $last_name = $_POST['user_gender'];
-            }
+            
             if (($attributes['isEmailChecked']) == 1) {
                 $email = $_POST['email'];
             }
+
+            if (($attributes['iswhatgender']) == 1) {
+                $user_gender = $_POST['user_gender'];
+            }
+
             if (($attributes['isPhonenumChecked']) == 1) {
                 $c_number = $_POST['c_number'];
             }
