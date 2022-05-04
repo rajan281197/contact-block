@@ -26,6 +26,7 @@ function child_plugin_activate()
 if (!defined('ABSPATH')): exit();
 endif; // No direct access allowed
 
+
 /**
  * Register Gutenber Scripts
  */
@@ -122,15 +123,7 @@ add_action(
                     'bordercolor' => array(
                         'type' => 'string',
                         'default' => '#111',
-                    ),
-                    'blockcolor' => array(
-                        'type' => 'string',
-                        'default' => '#ffffff',
-                    ),
-                    'subcontentcolor' => array(
-                        'type' => 'string',
-                        'default' => '#111',
-                    ),
+                    ),                        
                     'instructions' => array(
                         'type' => 'string',
                         'selector' => '.steps',
@@ -290,8 +283,13 @@ function Cf_Block_Render_callback($attributes)
 
                     <?php if (($attributes['iswhatgender']) == 1) {?>
                         <fieldset class="onecolumnfieldset radiofieldset">
-                                <input id="Male" type="radio" name="user_gender" value="Male"><label for="Male"><span></span>Male</label>
-                                <input id="Female" type="radio" name="user_gender" value="Female"><label for="Female"><span></span>Female</label>
+                        <label>Gender:</label>
+                            <label class="radio-inline">
+                                <input id="Male" type="radio" name="user_gender" value="Male">Male
+                            </label>
+                            <label class="radio-inline">
+                                <input id="Female" type="radio" name="user_gender" value="Female">Female
+                            </label>
                         </fieldset> 
 
                         <?php } else {_e('');
@@ -336,6 +334,14 @@ function Cf_Block_Render_callback($attributes)
     } elseif (($attributes['formlayout']) == 'two-column') {
             ?>
 
+        <h3 class="contact-maintitle" style="color:<?php esc_attr_e($attributes['receipenamecolor']);?>;text-align:<?php esc_attr_e($attributes['align']);?>">
+            <?php esc_attr_e($attributes['title']);?>
+        </h3>
+
+        <h4 class="contact-subtitle" style="color:<?php esc_attr_e($attributes['receipenamecolor']);?>;text-align:<?php esc_attr_e($attributes['align']);?>">
+            <?php esc_attr_e($attributes['subtitle']);?>
+        </h4>
+
             <div class="row">
                 <?php if (($attributes['isFirstNameChecked']) == 1) {?>
                     <div class="col-xs-6 form-group">
@@ -352,6 +358,20 @@ function Cf_Block_Render_callback($attributes)
                     </div>
 
                 <?php } else {_e(''); }?>
+
+                <?php if (($attributes['iswhatgender']) == 1) {?>
+                <div class="col-xs-6 form-group">
+                    <label>Gender:</label>
+                    <label class="radio-inline">
+                        <input id="Male" type="radio" name="user_gender" value="Male">Male
+                    </label>
+
+                    <label class="radio-inline">
+                        <input id="Female" type="radio" name="user_gender" value="Female">Female
+                    </label>
+                </div>
+                <?php } else {_e('');}?>
+
 
                 <?php if (($attributes['isEmailChecked']) == 1) {?>
                     <div class="col-xs-6 form-group">
@@ -378,7 +398,7 @@ function Cf_Block_Render_callback($attributes)
                 <?php } else { _e(''); }?>
 
                 <?php if (($attributes['isMessageChecked']) == 1) {?>
-                    <div class="col-xs-6 form-group">
+                    <div class="col-xs-12 form-group">
                         <label>Message:</label>
                         <textarea id="message" class="form-control" name="message" rows="4" cols="50"></textarea>
                     </div>

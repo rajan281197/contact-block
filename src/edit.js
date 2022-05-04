@@ -11,7 +11,7 @@ import { Row, Col } from 'antd';
 const Edit = (props) => {
 
 	const {
-		attributes: { align, title, subtitle, receipenamecolor, subtitlecolor, subcontentcolor, bordercolor, blockcolor, border_style, borderradiousvalue, paddingleft, paddingtop, paddingright, paddingbottom, isFirstNameChecked, isLastNameChecked, isEmailChecked, isPhonenumChecked, isMessageChecked, isAddressChecked, iswhatgender, isRecaptchaEnable, sitekey, secretkey, email_to, email_subject, colorv, gradientv, formlayout, gender_type },
+		attributes: { align, title, subtitle, receipenamecolor, subtitlecolor, bordercolor, border_style, borderradiousvalue, paddingleft, paddingtop, paddingright, paddingbottom, isFirstNameChecked, isLastNameChecked, isEmailChecked, isPhonenumChecked, isMessageChecked, isAddressChecked, iswhatgender, isRecaptchaEnable, sitekey, secretkey, email_to, email_subject, colorv, gradientv, formlayout, gender_type },
 		setAttributes,
 	} = props;
 
@@ -37,10 +37,6 @@ const Edit = (props) => {
 
 	const onChangeBorderColor = (value) => {
 		setAttributes({ bordercolor: value });
-	}
-
-	const onChangeBlockColor = (value) => {
-		setAttributes({ blockcolor: value });
 	}
 
 	const onChangeBorderStyle = (value) => {
@@ -69,10 +65,6 @@ const Edit = (props) => {
 
 	const onChangesubtitlecolorColor = (value) => {
 		setAttributes({ subtitlecolor: value });
-	};
-
-	const onChangesubcontentColor = (value) => {
-		setAttributes({ subcontentcolor: value });
 	};
 
 	const setFirstName = (value) => {
@@ -245,9 +237,7 @@ const Edit = (props) => {
 						value={borderradiousvalue}
 					/>
 					<br />
-					<p>Block Color: </p>
-					<ColorPalette value={blockcolor} onChange={onChangeBlockColor} />
-					<br />
+					
 					<p>Border Style: </p>
 					<SelectControl
 						value={border_style}
@@ -287,9 +277,7 @@ const Edit = (props) => {
 					<p>Title Color: </p>
 					<ColorPalette value={receipenamecolor} onChange={onChangeTitleColor} />
 					<p>Sub-Title Title Color: </p>
-					<ColorPalette value={subtitlecolor} onChange={onChangesubtitlecolorColor} />
-					<p>Sub-Content Text Color: </p>
-					<ColorPalette value={subcontentcolor} onChange={onChangesubcontentColor} />
+					<ColorPalette value={subtitlecolor} onChange={onChangesubtitlecolorColor} />					
 					<p>Background Color</p>
 					<ColorGradientControl
 						colorValue={colorv}

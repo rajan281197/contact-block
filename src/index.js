@@ -73,17 +73,9 @@ registerBlockType( 'gutenberg-contact-form-block/contact-block', {
 		},	
 		paddingleft:{
 			type: 'string'
-		},
-		blockcolor:{
-			type: 'string',
-            default: '#ffffff',
-		},
+		},		
 		border_style:{
 			type: 'string',
-		},
-		subcontentcolor:{
-			type: 'string',
-            default: '#111',
 		},		
 		isFirstNameChecked:{
 			type: 'Boolean',

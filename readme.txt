@@ -34,6 +34,7 @@ Click on install then click the activation link
 
 1. `/assets/Screenshot-1.png`
 2. `/assets/Screenshot-2.png`
+2. `/assets/Screenshot-3.png`
 
 == Changelog ==
 
