@@ -15,7 +15,7 @@ import '../style.css';
 // For more information on how this works, see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
 // Register the block
-registerBlockType( 'gutenberg-contact-form-block/contact-form-block', {
+registerBlockType( 'gutenberg-contact-form-block/contact-block', {
 	apiVersion: '2',
 	title: 'CF Block',
 	icon: {

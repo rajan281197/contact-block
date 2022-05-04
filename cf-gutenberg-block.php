@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: CF block
- * Description: Gutenberg CF block with contact form field,
+ * Description: Gutenberg Contact form block with contact form field
  * Requires Plugins: WP Mail SMTP
  * Requires at least: 5.8
  * Requires PHP:      7.0
@@ -9,7 +9,7 @@
  * Version: 1.0.0
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
- * Text-Domain: contact-form-block
+ * Text-Domain: contact-block
  */
 
 register_activation_hook(__FILE__, 'child_plugin_activate');
@@ -54,17 +54,12 @@ add_action(
 add_action(
     'wp_enqueue_scripts', function () {
         wp_enqueue_style('gutenberg-block-style-contact-form-block', plugins_url('assets/css/style.css', __FILE__), [], false, 'all');
-        wp_register_script('recaptchaapi', plugins_url('assets/js/api.js', __FILE__), array('jquery'), '', 'true');
-        wp_enqueue_script('recaptchaapi');
-        wp_register_script('captchajs', plugins_url('assets/js/captchajs.js', __FILE__), array('jquery'), '', 'true');
-        wp_enqueue_script('captchajs');
 
     }
 );
 add_action(
     'admin_enqueue_scripts', function () {
         wp_enqueue_style('gutenberg-block-style-contact-form-block', plugins_url('assets/css/editor.css', __FILE__), [], false, 'all');
-        // wp_enqueue_style('antd-css', plugins_url('node_modules/antd/dist/antd.css', __FILE__), [], false, 'all');
 
     }
 );
@@ -75,7 +70,7 @@ add_action(
 add_action(
     'init', function () {
         register_block_type(
-            'gutenberg-contact-form-block/contact-form-block',
+            'gutenberg-contact-form-block/contact-block',
             [
                 'style' => 'gutenberg-block-style-contact-form-block',
                 'editor_style' => 'gutenberg-block-style-contact-form-block',
@@ -333,15 +328,7 @@ function Cf_Block_Render_callback($attributes)
 
                         <?php } else {_e('');
                     }?>
-
-                    <?php if (($attributes['isRecaptchaEnable']) == 1) {?>
-                        <fieldset class="onecolumnfieldset">
-                                <div class="g-recaptcha" id="rcaptcha" data-theme="dark"  data-sitekey="<?php esc_attr_e($attributes['sitekey']);?>"></div>
-                                <span id="captcha" style="color:red"></span>
-                        </fieldset>
-
-                        <?php } else {_e('');
-                    }?>
+                   
                                             
                 </div>
             
@@ -398,19 +385,25 @@ function Cf_Block_Render_callback($attributes)
 
                 <?php } else {_e(''); }?>
 
-                <?php if (($attributes['isRecaptchaEnable']) == 1) {?>
-                    <div class="col-xs-12 form-group">
-                        <div class="g-recaptcha"  id="rcaptcha" data-sitekey="<?php esc_attr_e($attributes['sitekey']);?>"></div>
-                        <span id="captcha" style="color:red"></span>
-                    </div>
-                <?php } else {_e(''); }?>
-
                 <?php } ?>
 
 
-                <fieldset class="onecolumnfieldset">
-                    <input type="submit" id="submit" class="btn btn-success p-0" name="gutenberg_form_submit" >
-                </fieldset>         
+                   
+                <?php
+                if (($attributes['formlayout']) == 'one-column'){
+                    ?>
+                    <fieldset class="onecolumnfieldset">
+                        <input type="submit" id="submit" class="btn btn-success p-0" name="gutenberg_form_submit" >
+                    </fieldset>    
+                    <?php
+                } else {
+                    ?>
+                    <div class="col-xs-12 form-group">
+                        <input type="submit" id="submit" class="btn btn-success p-0" name="gutenberg_form_submit">
+                    </div>
+                    <?php
+                }
+                ?>    
             </div>
 
         </form>
@@ -420,33 +413,33 @@ function Cf_Block_Render_callback($attributes)
 if (!empty($_POST['gutenberg_form_submit'])) {
         if (($attributes['formlayout']) == 'one-column' || ($attributes['formlayout']) == 'two-column') {
             if (($attributes['isFirstNameChecked']) == 1) {
-                $firstname = $_POST['first_name'];
+                $firstname = sanitize_text_field($_POST['first_name']);
             }
             if (($attributes['isLastNameChecked']) == 1) {
-                $last_name = $_POST['last_name'];
+                $last_name = sanitize_text_field($_POST['last_name']);
             }
             
             if (($attributes['isEmailChecked']) == 1) {
-                $email = $_POST['email'];
+                $email = sanitize_email($_POST['email']);
             }
 
             if (($attributes['iswhatgender']) == 1) {
-                $user_gender = $_POST['user_gender'];
+                $user_gender = sanitize_text_field($_POST['user_gender']);
             }
 
             if (($attributes['isPhonenumChecked']) == 1) {
-                $c_number = $_POST['c_number'];
+                $c_number = sanitize_text_field($_POST['c_number']);
             }
             if (($attributes['isAddressChecked']) == 1) {
-                $address = $_POST['address'];
+                $address = sanitize_text_field($_POST['address']);
             }
             if (($attributes['isMessageChecked']) == 1) {
-                $message = $_POST['message'];
+                $message = sanitize_textarea_field($_POST['message']);
             }
 
             $to = $attributes['email_to'];
             $subject = $attributes['email_subject'];
-            $body = "First name is $firstname  & email id is $email. ";
+            $body = "First name is $firstname $last_name  & email id is $email Gender us is $user_gender & PHone number is $c_number  $address $message. ";
             $separator = md5(time());
             $headers = "MIME-Version: 1.0";
             $headers .= "Content-Type: multipart/mixed; boundary=\"" . $separator . "\"";

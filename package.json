@@ -1,5 +1,5 @@
 {
-    "name": "contact-form-block",
+    "name": "contact-block",
     "version": "1.0.0",
     "description": "A learning plugin for gutenberg",
     "main": "index.js",

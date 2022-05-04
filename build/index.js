@@ -1824,7 +1824,7 @@ __webpack_require__.r(__webpack_exports__);
 // For more information on how this works, see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 // Register the block
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('gutenberg-contact-form-block/contact-form-block', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('gutenberg-contact-form-block/contact-block', {
   apiVersion: '2',
   title: 'CF Block',
   icon: {
@@ -2848,7 +2848,7 @@ function _unsupportedIterableToArray(o, minLen) {
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkcontact_form_block"] = self["webpackChunkcontact_form_block"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkcontact_block"] = self["webpackChunkcontact_block"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	}();
