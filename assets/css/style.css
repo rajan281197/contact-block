@@ -94,3 +94,12 @@
     padding: 25px;
     margin: 50px 0;
 }
+
+
+.captcha-form {
+    display: flex;
+}
+
+.captcha-text,.captcha-image{
+    width: 50%;
+}

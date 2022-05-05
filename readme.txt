@@ -1,7 +1,7 @@
 === CF block ===
 Contributors:      Rajan Panchal
 Tags:              block, gutenberg, Contact Form ,Mail, block-editor, blocks, Gutenberg block, gutenberg blocks, Email, Html Form , Custom Email To,Custom Email Subject, Html Form, Contact Form Multi-Column
-Tested up to:      5.8.0
+Tested up to:      5.9.3
 Stable tag:        1.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html

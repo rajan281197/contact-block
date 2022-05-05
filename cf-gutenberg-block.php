@@ -12,8 +12,8 @@
  * Text-Domain: contact-block
  */
 
-register_activation_hook(__FILE__, 'child_plugin_activate');
-function child_plugin_activate()
+register_activation_hook(__FILE__, 'Cfb_Block_child_plugin_activate');
+function Cfb_Block_child_plugin_activate()
 {
 
     // Require parent plugin
@@ -76,7 +76,7 @@ add_action(
                 'style' => 'gutenberg-block-style-contact-form-block',
                 'editor_style' => 'gutenberg-block-style-contact-form-block',
                 'editor_scripts' => 'gutenberg-block-editor-script-contact-form-block',
-                'render_callback' => 'Cf_Block_Render_callback',
+                'render_callback' => 'Cfb_Block_Render_callback',
                 'attributes' => array(
                     'align' => array(
                         'type' => 'string',
@@ -96,26 +96,7 @@ add_action(
                         'type' => 'string',
                         'default' => '#111',
                     ),
-                    'imagestyle' => array(
-                        'type' => 'array',
-                        'default' => 'img-rounded',
-                    ),
-                    'mediaID' => array(
-                        'type' => 'number',
-                    ),
-                    'mediaURL' => array(
-                        'type' => 'string',
-                        'selector' => 'img',
-                        'attribute' => 'src',
-                    ),
-                    'images' => array(
-                        'type' => 'array',
-                        'default' => [],
-                    ),
-                    'ingredients' => array(
-                        'type' => 'string',
-                        'source' => 'html',
-                    ),
+                  
                     'subtitlecolor' => array(
                         'type' => 'string',
                         'default' => '#111',
@@ -123,29 +104,11 @@ add_action(
                     'bordercolor' => array(
                         'type' => 'string',
                         'default' => '#111',
-                    ),                        
-                    'instructions' => array(
-                        'type' => 'string',
-                        'selector' => '.steps',
-                    ),
-                    'imagestyle' => array(
-                        'type' => 'string',
-                    ),
-                    'receipe_category' => array(
-                        'type' => 'string',
-                    ),
-                    'receipe_category' => array(
-                        'type' => 'string',
-                    ),
+                    ),                       
+                  
                     'border_style' => array(
                         'type' => 'string',
-                    ),
-                    'preptime' => array(
-                        'type' => 'string',
-                    ),
-                    'cooktime' => array(
-                        'type' => 'string',
-                    ),
+                    ),                   
                     'borderradiousvalue' => array(
                         'type' => 'string',
                     ),
@@ -160,23 +123,7 @@ add_action(
                     ),
                     'paddingleft' => array(
                         'type' => 'string',
-                    ),
-
-                    'additional' => array(
-                        'type' => 'string',
-                    ),
-                    'totaltime' => array(
-                        'type' => 'string',
-                    ),
-                    'servings' => array(
-                        'type' => 'string',
-                    ),
-                    'datayield' => array(
-                        'type' => 'string',
-                    ),
-                    'nutrition_facts' => array(
-                        'type' => 'string',
-                    ),
+                    ),                    
                     'message' => array(
                         'type' => 'string',
                         'source' => 'html',
@@ -239,13 +186,13 @@ add_action(
 );
 
 /**
- * [Cf_Block_Render_callback description]
+ * [Cfb_Block_Render_callback description]
  *
  * @param [type] $attributes [$attributes description]
  *
  * @return [type] [return description]
  */
-function Cf_Block_Render_callback($attributes)
+function Cfb_Block_Render_callback($attributes)
 {
     ob_start();
 
